@@ -159,3 +159,29 @@ if ( !function_exists('thachpham_pagination')) {
 		</nav>
 	<?php }
 }
+
+/**
+Hiển thị thumbnail, hàm sử dụng trong file content.php
+**/
+if ( !function_exists('thachpham_thumbnail')) {
+  function thachpham_thumbnail($size) {
+    //Kiểm tra xem trang này: ko phải là trang đơn (tức ta muốn hiển thị ngoài trang chủ hoặc trang bìa) && có thumbnail && ko yêu cầu pass || có format là image
+    if (!is_single() && has_post_thumbnail() && !post_password_required() || has_post_format('image')) : ?>
+    <figure class="post-thumbnail"><?php the_post_thumbnail($size); ?></figure>
+    <?php endif; ?>
+  <?php }
+}
+
+/**
+thachpham_entry_header = hiển thị tiêu đề post
+**/
+if ( !function_exists('thachpham_entry_header') ) {
+  function thachpham_entry_header() {?>
+    <!--nếu trong trang single (trang hiển thị nội dung) -->
+    <?php if ( is_single() ) : ?> 
+      <h1><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
+    <?php else : ?>
+       <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>  
+     <?php endif; ?>
+  <?php }
+}
