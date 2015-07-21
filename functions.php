@@ -199,8 +199,8 @@ if ( !function_exists('thachpham_entry_meta') ){
           get_the_author() );
         printf( __('<span class="date-published"> at %1$s', 'thachpham'),
           get_the_date() );
-        printf( __('<span class="category"> in %1$s', 'thachpham'),
-          get_the_category_list() );
+        printf( __('<span class="category"> in %1$s ', 'thachpham'),
+          get_the_category_list(',') );
         //hiển thị bình luận, tuy nhiên có 2 trường hợp là bình luận đã đóng hay còn mở
         if ( comments_open() ) :
           echo '<span class="meta-reply">';
