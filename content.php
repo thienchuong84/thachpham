@@ -4,7 +4,7 @@
 	</div>
 	<div class="entry-header">
 		<?php thachpham_entry_header(); ?>
-		<?php //thachpham_entry_meta(); //meta gồm tên tác giả, danh mục .. ?>
+		<?php thachpham_entry_meta(); //meta gồm tên tác giả, danh mục .. ?>
 	</div>
 	<div class="entry-content">
 

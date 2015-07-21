@@ -179,9 +179,41 @@ if ( !function_exists('thachpham_entry_header') ) {
   function thachpham_entry_header() {?>
     <!--nếu trong trang single (trang hiển thị nội dung) -->
     <?php if ( is_single() ) : ?> 
-      <h1><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
+      <h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
     <?php else : ?>
-       <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>  
+       <h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>  
      <?php endif; ?>
+  <?php }
+}
+
+/**
+thachpham_entry_meta - hien thi ten tac gia, tag ..
+**/
+if ( !function_exists('thachpham_entry_meta') ){
+  function thachpham_entry_meta(){ ?>
+    <?php if( !is_page() ) : ?>
+      <div class="entry-meta">
+      <?php
+        //muốn cùng 1 hàng thì dùng span tag
+        printf( __('<span class="author">Posts by %1$s', 'thachpham'),
+          get_the_author() );
+        printf( __('<span class="date-published"> at %1$s', 'thachpham'),
+          get_the_date() );
+        printf( __('<span class="category"> in %1$s', 'thachpham'),
+          get_the_category_list() );
+        //hiển thị bình luận, tuy nhiên có 2 trường hợp là bình luận đã đóng hay còn mở
+        if ( comments_open() ) :
+          echo '<span class="meta-reply">';
+          comments_popup_link(
+            __('Leave a comment', 'thachpham'),
+            __('One comment', 'thachpham'),
+            __('% comments', 'thachpham'),
+            __('Read all comments', 'thachpham')
+            );
+          echo '</span>';
+        endif;
+      ?>
+      </div>
+    <?php endif; ?>
   <?php }
 }
