@@ -8,5 +8,8 @@
 	</div>
 	<div class="entry-content">
 		<?php thachpham_entry_content(); ?>
+		<?php //chỉ hiển thị tag trong trang single thôi, dùng hàm if rút gọn
+		( is_single() ? thachpham_entry_tag() : '' );
+		?>
 	</div>
 </article>
