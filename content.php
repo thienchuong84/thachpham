@@ -7,6 +7,6 @@
 		<?php thachpham_entry_meta(); //meta gồm tên tác giả, danh mục .. ?>
 	</div>
 	<div class="entry-content">
-
+		<?php thachpham_entry_content(); ?>
 	</div>
 </article>

@@ -217,3 +217,29 @@ if ( !function_exists('thachpham_entry_meta') ){
     <?php endif; ?>
   <?php }
 }
+
+/**
+thachpham_entry_content - will be used in content.php
+**/
+if ( !function_exists('thachpham_entry_content')) {
+  function thachpham_entry_content() {
+    // ta co 2 vấn đề: ơ trang chủ ta chỉ hiển thị phần rút gọn, còn vào trang thì hiển thị full
+    if(!is_single()){
+      //hàm the_excerpt hiển thị 1 đoạn nội dung
+      the_excerpt();
+    } else {
+      //hàm the_content hiển thị full content
+      the_content();
+      
+      // phân trang trong single
+      $link_pages = array(
+        'before' => __('<p>Page: ', 'thachpham'),
+        'after' => '</p>',
+        'nextpagelink' => __('Next Page', 'thachpham'),
+        'previouspagelink' => __('Previous Page'. 'thachpham')
+        );
+      // gọi hàm wp_link_pages để dùng biến vừa khai báo ở trên vào
+      wp_link_pages( $link_pages );
+    }
+  }
+}
