@@ -243,3 +243,11 @@ if ( !function_exists('thachpham_entry_content')) {
     }
   }
 }
+
+/**
+thachpham_readmore
+**/
+function thachpham_readmore() {
+  return '<a class="read-more" href="'. get_permalink(get_the_ID()).'">'.__(' Read More', 'thachpham').'</a>';
+}
+add_filter('excerpt_more', 'thachpham_readmore');
